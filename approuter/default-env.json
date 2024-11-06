@@ -1,0 +1,71 @@
+{
+    "destinations": [
+      {
+        "name": "be",
+        "url": "http://localhost:3000",
+        "forwardAuthToken": true
+      },
+      {
+        "name": "ws",
+        "url": "ws://localhost:3000",
+        "forwardAuthToken": false
+      }
+    ],
+    "VCAP_SERVICES": {
+		"xsuaa": [
+			{
+				"label": "xsuaa",
+				"provider": null,
+				"plan": "application",
+				"name": "xsuaa-wb-tr",
+				"tags": [
+					"xsuaa"
+				],
+				"instance_guid": "7f5372f3-875b-4f46-902f-d96dfd5eecdf",
+				"instance_name": "xsuaa-wb-tr",
+				"binding_guid": "5ba4bdb2-6488-4f70-b805-15b3d1e26b29",
+				"binding_name": null,
+				"credentials": {
+					"tenantmode": "dedicated",
+					"sburl": "https://internal-xsuaa.authentication.us10.hana.ondemand.com",
+					"subaccountid": "eaabc874-6970-4fa9-bc42-ddebdbc7ff39",
+					"credential-type": "instance-secret",
+					"clientid": "sb-xsuaa-wb-tr!t351989",
+					"xsappname": "xsuaa-wb-tr!t351989",
+					"clientsecret": "UvxzuvO2NsFuuqjsASNP/T9WjkI=",
+					"serviceInstanceId": "7f5372f3-875b-4f46-902f-d96dfd5eecdf",
+					"url": "https://33025966trial.authentication.us10.hana.ondemand.com",
+					"uaadomain": "authentication.us10.hana.ondemand.com",
+					"verificationkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxKP7Al5jz8GWXOKZQX9T\nJf2V7PnpDaQynoTAoqBfjWj3/1m0wJ4M7NeEFCOzhsllE6gAIla0VO3sk2ABfMQn\nIvyTuVxGdxy7hOMs5XzP7tVj9gigUFRLbQpSTQTrcENCSm7e+k9m5eGUVRjgfY2z\nVfxFioZk6Tdy+7X3oL/IM1pKkYcli/xMBHkvdnQj3zgaoyEljTAtUnNzVSYXe2OM\nIerZtCGpB/3V7u0VhygwbVi8nOpsNditG7A4ctnLYnQUvDCni/hNbTZd96oDWpk3\nKM1k7fmlGmzqJ9p+RTCAO1gfz/s7WWp6mrzV0ssZM+DLFiPQTuSE88WI5ZHDVkKx\nTQIDAQAB\n-----END PUBLIC KEY-----",
+					"apiurl": "https://api.authentication.us10.hana.ondemand.com",
+					"identityzone": "33025966trial",
+					"identityzoneid": "eaabc874-6970-4fa9-bc42-ddebdbc7ff39",
+					"tenantid": "eaabc874-6970-4fa9-bc42-ddebdbc7ff39",
+					"zoneid": "eaabc874-6970-4fa9-bc42-ddebdbc7ff39"
+				},
+				"syslog_drain_url": null,
+				"volume_mounts": []
+			}
+		]
+	},
+    "VCAP_APPLICATION": {
+		"cf_api": "https://api.cf.us10-001.hana.ondemand.com",
+		"limits": {
+			"fds": 32768
+		},
+		"application_name": "wb-tr-approuter",
+		"application_uris": [
+			"wb-tr-app.cfapps.us10-001.hana.ondemand.com"
+		],
+		"name": "wb-tr-approuter",
+		"space_name": "dev",
+		"space_id": "e3f51b75-7478-452f-802b-f7b769799694",
+		"organization_id": "d6f62284-af04-4325-8f88-24c63ad7a58d",
+		"organization_name": "33025966trial",
+		"uris": [
+			"wb-tr-app.cfapps.us10-001.hana.ondemand.com"
+		],
+		"users": null,
+		"application_id": "0553ce3f-51b8-49c5-80a8-f63612663c07"
+	}
+}

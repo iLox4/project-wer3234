@@ -1,0 +1,13 @@
+applications:
+  - name: wb-tr-be
+    path: .
+    memory: 512M
+    disk_quota: 512M
+    buildpacks:
+      - nodejs_buildpack
+    command: npm start
+    env:
+      NPM_CONFIG_PRODUCTION: false
+      APP_LOG_LEVEL: debug
+    services:
+      - xsuaa-instance

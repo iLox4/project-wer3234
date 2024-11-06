@@ -1,0 +1,1288 @@
+{
+    "config": [{
+        "source": {
+            "files": [
+                {
+                    "source_file": "Object Definition.csv",
+                    "source_filters": [
+                        {
+                            "column_name": "id",
+                            "filter": "${objFilter}"
+                        },
+                        {
+                            "column_name": "fields.visibility",
+                            "filter": "^(READ_ONLY|EDITABLE)$"
+                        }
+                    ]
+                }
+            ],
+            "join_source_1": null,
+            "joins": []
+        },
+        "target": {
+            "sheet_name": "${objSheet}",
+            "table_header": "${objSheet}",
+            "table_header_styles": [
+                "table_header"
+            ],
+            "columns": [
+                {
+                    "column_header": "Object ID",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "id"
+                },
+                {
+                    "column_header": "Object Field",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "fields.name"
+                },
+                {
+                    "column_header": "Object",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "label.en_US",
+                    "data_source_column_alt": "label.defaultValue"
+                },
+                {
+                    "column_header": "Object Translation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "label"
+                },
+                {
+                    "column_header": "Field Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "fields.label.en_US",
+                    "data_source_column_alt": "fields.label.defaultValue"
+                },
+                {
+                    "column_header": "Explanation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                },
+                {
+                    "column_header": "Field Name Translation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translations, incl. the translations of the Sections, eg. Position Details",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "fields.label"
+                },
+                {
+                    "column_header": "Comment",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Add a comment if needed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "source": {
+            "files": [
+                {
+                    "source_file": "HRIS Element-HRIS Fields.csv",
+                    "source_filters": [
+                        {
+                            "column_name": "ecField.enabled",
+                            "filter": "^true$"
+                        },
+                        {
+                            "column_name": "ecField.externalName.en_US",
+                            "filter": "^.+$"
+                        }
+                    ]
+                },
+                {
+                    "source_file": "HRIS Element.csv",
+                    "source_filters": []
+                }
+            ],
+            "join_source_1": "HRIS Element-HRIS Fields.csv",
+            "joins": [
+                {
+                    "source_1_key": "externalCode",
+                    "source_2": "HRIS Element.csv",
+                    "source_2_key": "externalCode",
+                    "inner": false
+                }
+            ]
+        },
+        "target": {
+            "sheet_name": "Global Template Fields",
+            "table_header": "Global Template Fields",
+            "table_header_styles": [
+                "table_header"
+            ],
+            "columns": [
+                {
+                    "column_header": "Portlet Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "externalName.en_US"
+                },
+                {
+                    "column_header": "Translation - Portlet Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed\nTranslations need to be provided  in case of changes in standard English names",
+                    "column_subheader_styles": [
+                        "column_subheader",
+                        "wrap_text"
+                    ],
+                    "translation_source_column": "externalName"
+                },
+                {
+                    "column_header": "External Code",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "externalCode"
+                },
+                {
+                    "column_header": "External Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "ecField.externalCode"
+                },
+                {
+                    "column_header": "Field Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "ecField.externalName.en_US"
+                },
+                {
+                    "column_header": "Explanation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                },
+                {
+                    "column_header": "Translation - Field Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "ecField.externalName"
+                },
+                {
+                    "column_header": "Comment",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Add a comment if needed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "source": {
+            "files": [
+                {
+                    "source_file": "Localized HRIS Element-Localized HRIS Fields.csv",
+                    "source_filters": [
+                        {
+                            "column_name": "ecField.enabled",
+                            "filter": "^true$"
+                        },
+                        {
+                            "column_name": "ecField.externalName.en_US",
+                            "filter": "^.+$"
+                        }
+                    ]
+                },
+                {
+                    "source_file": "Localized HRIS Element.csv",
+                    "source_filters": []
+                }
+            ],
+            "join_source_1": "Localized HRIS Element-Localized HRIS Fields.csv",
+            "joins": [
+                {
+                    "source_1_key": "externalCode",
+                    "source_2": "Localized HRIS Element.csv",
+                    "source_2_key": "externalCode",
+                    "inner": false
+                }
+            ]
+        },
+        "target": {
+            "sheet_name": "Local Fields",
+            "table_header": "Local Fields",
+            "table_header_styles": [
+                "table_header"
+            ],
+            "columns": [
+                {
+                    "column_header": "Country Code",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "country.externalCode"
+                },
+                {
+                    "column_header": "Portlet Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "externalName.en_US"
+                },
+                {
+                    "column_header": "Translation - Portlet Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed\nTranslations need to be provided  in case of changes in standard English names",
+                    "column_subheader_styles": [
+                        "column_subheader",
+                        "wrap_text"
+                    ],
+                    "translation_source_column": "externalName"
+                },
+                {
+                    "column_header": "External Code",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "externalCode"
+                },
+                {
+                    "column_header": "External Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "ecField.externalCode"
+                },
+                {
+                    "column_header": "Field Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "ecField.externalName.en_US"
+                },
+                {
+                    "column_header": "Explanation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                },
+                {
+                    "column_header": "Translation - Field Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "ecField.externalName"
+                },
+                {
+                    "column_header": "Comment",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Add a comment if needed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "source": {
+            "files": [
+                {
+                    "source_file": "Picklist HRIS Fields.csv",
+                    "source_filters": [
+                        {
+                            "column_name": "ecField.enabled",
+                            "filter": "^true$"
+                        },
+                        {
+                            "column_name": "ecField.picklist",
+                            "filter": "^.+$"
+                        }
+                    ]
+                },
+                {
+                    "source_file": "Picklist HRIS Element.csv",
+                    "source_filters": []
+                },
+                {
+                    "source_file": "Picklist-Values.csv",
+                    "source_filters": [
+                        {
+                            "column_name": "values.label.en_US",
+                            "filter": "^.+$"
+                        }
+                    ]
+                }
+            ],
+            "join_source_1": "Picklist-Values.csv",
+            "joins": [
+                {
+                    "source_1_key": "id",
+                    "source_2": "Picklist HRIS Fields.csv",
+                    "source_2_key": "ecField.picklist",
+                    "inner": true
+                },
+                {
+                    "source_1_key": "externalCode",
+                    "source_2": "Picklist HRIS Element.csv",
+                    "source_2_key": "externalCode",
+                    "inner": false
+                }
+            ]
+        },
+        "target": {
+            "sheet_name": "Picklist values",
+            "table_header": "Picklist values",
+            "table_header_styles": [
+                "table_header"
+            ],
+            "columns": [
+                {
+                    "column_header": "Portlet External Code",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "externalCode"
+                },
+                {
+                    "column_header": "Field",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "ecField.externalName.en_US"
+                },
+                {
+                    "column_header": "Picklist Code",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "id"
+                },
+                {
+                    "column_header": "Option ID",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "values.optionId"
+                },
+                {
+                    "column_header": "values.externalCode",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "values.externalCode"
+                },
+                {
+                    "column_header": "Custom translation needed?",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Translations need to be provided only for custom values and in case of changes in standard English names",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                },
+                {
+                    "column_header": "values.label.en_US",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "US English",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "values.label.en_US"
+                },
+                {
+                    "column_header": "Translation - Picklist value",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "values.label"
+                },
+                {
+                    "column_header": "Comment",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Add a comment if needed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "source": {
+            "files": [
+                {
+                    "source_file": "FoTranslation.csv",
+                    "source_filters": [
+                        {
+                            "column_name": "foType",
+                            "filter": "^eventReason$"
+                        },
+                        {
+                            "column_name": "value.en_US",
+                            "filter": "^.+$"
+                        }
+                    ]
+                }
+            ],
+            "join_source_1": null,
+            "joins": []
+        },
+        "target": {
+            "sheet_name": "Event Reasons",
+            "table_header": "Events & Event Reasons",
+            "table_header_styles": [
+                "table_header"
+            ],
+            "columns": [
+                {
+                    "column_header": "Event Reason Id",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "externalCode"
+                },
+                {
+                    "column_header": "Event Reason",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "value.en_US"
+                },
+                {
+                    "column_header": "Translation - Event Reason",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation in the column below of the respective Event Reason",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "value"
+                },
+                {
+                    "column_header": "Event Reason Description Id",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "externalCodeDesc"
+                },
+                {
+                    "column_header": "Event Reason Description",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "valueDesc.en_US"
+                },
+                {
+                    "column_header": "Translation - Event Reason Description",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation in the column below of the respective Event Reason",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "valueDesc"
+                },
+                {
+                    "column_header": "Comment",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Add a comment if needed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "source": {
+            "files": [
+                {
+                    "source_file": "FoTranslation.csv",
+                    "source_filters": [
+                        {
+                            "column_name": "foType",
+                            "filter": "^frequency$"
+                        },
+                        {
+                            "column_name": "value.en_US",
+                            "filter": "^.+$"
+                        }
+                    ]
+                }
+            ],
+            "join_source_1": null,
+            "joins": []
+        },
+        "target": {
+            "sheet_name": "Frequency",
+            "table_header": "Frequency",
+            "table_header_styles": [
+                "table_header"
+            ],
+            "columns": [
+                {
+                    "column_header": "System Field Id",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "externalCode"
+                },
+                {
+                    "column_header": "SF Label",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "value.en_US"
+                },
+                {
+                    "column_header": "Translation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation in the column below of the respective Frequency",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "value"
+                },
+                {
+                    "column_header": "Description System Field Id",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "externalCodeDesc"
+                },
+                {
+                    "column_header": "SF Description",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "valueDesc.en_US"
+                },
+                {
+                    "column_header": "Description Translation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation in the column below of the respective Frequency",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "valueDesc"
+                },
+                {
+                    "column_header": "Comment",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Add a comment if needed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "source": {
+            "files": [
+                {
+                    "source_file": "FoTranslation.csv",
+                    "source_filters": [
+                        {
+                            "column_name": "foType",
+                            "filter": "^payComponentGroup$"
+                        },
+                        {
+                            "column_name": "value.en_US",
+                            "filter": "^.+$"
+                        }
+                    ]
+                }
+            ],
+            "join_source_1": null,
+            "joins": []
+        },
+        "target": {
+            "sheet_name": "Pay Component Groups",
+            "table_header": "Pay Component Groups",
+            "table_header_styles": [
+                "table_header"
+            ],
+            "columns": [
+                {
+                    "column_header": "System Field Id",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "externalCode"
+                },
+                {
+                    "column_header": "SF Label",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "value.en_US"
+                },
+                {
+                    "column_header": "Translation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation in the column below of the respective Frequency",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "value"
+                },
+                {
+                    "column_header": "Description System Field Id",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "externalCodeDesc"
+                },
+                {
+                    "column_header": "SF Description",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "valueDesc.en_US"
+                },
+                {
+                    "column_header": "Description Translation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation in the column below of the respective Frequency",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "valueDesc"
+                },
+                {
+                    "column_header": "Comment",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Add a comment if needed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "source": {
+            "files": [
+                {
+                    "source_file": "FoTranslation.csv",
+                    "source_filters": [
+                        {
+                            "column_name": "foType",
+                            "filter": "^payComponent$"
+                        },
+                        {
+                            "column_name": "value.en_US",
+                            "filter": "^.+$"
+                        }
+                    ]
+                }
+            ],
+            "join_source_1": null,
+            "joins": []
+        },
+        "target": {
+            "sheet_name": "Pay Components",
+            "table_header": "Pay Components",
+            "table_header_styles": [
+                "table_header"
+            ],
+            "columns": [
+                {
+                    "column_header": "System Field Id",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "externalCode"
+                },
+                {
+                    "column_header": "SF Label",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "value.en_US"
+                },
+                {
+                    "column_header": "Translation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation in the column below of the respective Frequency",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "value"
+                },
+                {
+                    "column_header": "Description System Field Id",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "externalCodeDesc"
+                },
+                {
+                    "column_header": "SF Description",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "valueDesc.en_US"
+                },
+                {
+                    "column_header": "Description Translation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation in the column below of the respective Frequency",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "valueDesc"
+                },
+                {
+                    "column_header": "Comment",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Add a comment if needed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "source": null,
+        "target": {
+            "sheet_name": "Email Notifications",
+            "table_header": "Email Notifications",
+            "table_header_styles": [
+                "table_header"
+            ],
+            "columns": [
+                {
+                    "column_header": "Description",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                },
+                {
+                    "column_header": "Text",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                },
+                {
+                    "column_header": "Translation - Text",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation of the subject and text of the notification. Tags in capital letters, eg. [[EVENT]] does not need to be translated, this is dynamically filled by the system.",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                },
+                {
+                    "column_header": "Translation - Text NEW",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation of the subject and text of the notification. Tags in capital letters, eg. [[EVENT]] does not need to be translated, this is dynamically filled by the system.",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                },
+                {
+                    "column_header": "Comment",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Add a comment if needed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "source": {
+            "files": [
+                {
+                    "source_file": "Message Definition.csv",
+                    "source_filters": [
+                        {
+                            "column_name": "text.en_US",
+                            "filter": "^.+$"
+                        }
+                    ]
+                }
+            ],
+            "join_source_1": null,
+            "joins": []
+        },
+        "target": {
+            "sheet_name": "Warning&Error Messages",
+            "table_header": "Warning&Error Messages",
+            "table_header_styles": [
+                "table_header"
+            ],
+            "columns": [
+                {
+                    "column_header": "External Code",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "externalCode"
+                },
+                {
+                    "column_header": "Text",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "text.en_US"
+                },
+                {
+                    "column_header": "Explanation",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                },
+                {
+                    "column_header": "Translation - Text",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation of Warning/Error Messages below",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "text"
+                },
+                {
+                    "column_header": "Comment",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Add a comment if needed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "source": {
+            "files": [
+                {
+                    "source_file": "Alert Message.csv",
+                    "source_filters": [
+                        {
+                            "column_name": "alertHeaderLocalized.en_US",
+                            "filter": "^.+$"
+                        },
+                        {
+                            "column_name": "alertDescriptionLocalized.en_US",
+                            "filter": "^.+$"
+                        }
+                    ]
+                }
+            ],
+            "join_source_1": null,
+            "joins": []
+        },
+        "target": {
+            "sheet_name": "Alert Messages",
+            "table_header": "Alert Messages",
+            "table_header_styles": [
+                "table_header"
+            ],
+            "columns": [
+                {
+                    "column_header": "External Code",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "externalCode"
+                },
+                {
+                    "column_header": "External Name",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "externalName"
+                },
+                {
+                    "column_header": "Status",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Technical information for system configuration. Please do not change",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "column_hidden": true,
+                    "data_source_column": "effectiveStatus"
+                },
+                {
+                    "column_header": "Alert Header",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "alertHeaderLocalized.en_US"
+                },
+                {
+                    "column_header": "Translation - Alert Header",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation of the header of the alert.",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "alertHeaderLocalized"
+                },
+                {
+                    "column_header": "Alert Description",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Cannot be changed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "data_source_column": "alertDescriptionLocalized.en_US"
+                },
+                {
+                    "column_header": "Translation - Alert Description",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Please provide translation of the text of the alert. Tags in capital letters, [[SUBJECT_USER]] does not need to be translated, this is dynamically fielled by the system.",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ],
+                    "translation_source_column": "alertDescriptionLocalized"
+                },
+                {
+                    "column_header": "Comment",
+                    "column_header_styles": [
+                        "column_header"
+                    ],
+                    "column_subheader": "Add a comment if needed",
+                    "column_subheader_styles": [
+                        "column_subheader"
+                    ]
+                }
+            ]
+        }
+    }],
+    "styles": {
+        "": {
+            "font": {
+                "size": 10 
+            }
+        },
+        "table_header": {
+            "font": {
+                "bold": true,
+                "color": { "argb": "${colorFontPrimary}" }
+            },
+            "fill": {
+                "type": "pattern",
+                "pattern": "solid",
+                "fgColor": { "argb": "${colorPrimary}" }
+            }
+        },
+        "column_header": {
+            "font": {
+                "bold": true,
+                "color": { "argb": "${colorFontPrimary}" }
+            },
+            "fill": {
+                "type": "pattern",
+                "pattern": "solid",
+                "fgColor": { "argb": "${colorPrimary}" }
+            }
+        },
+        "column_subheader": {
+            "font": {
+                "color": { "argb": "${colorFontSecondary}" }
+            },
+            "fill": {
+                "type": "pattern",
+                "pattern": "solid",
+                "fgColor": { "argb": "${colorSecondary}" }
+            }
+        },
+        "inactive": {
+            "fill": {
+                "type": "pattern",
+                "pattern": "solid",
+                "fgColor": { "argb": "D9D9D9" }
+            }
+        },
+        "wrap_text": {
+            "alignment": {
+                "wrapText": true
+            }
+        }
+    }
+}

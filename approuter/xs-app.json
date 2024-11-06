@@ -1,0 +1,32 @@
+{
+  "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/do/logout",
+    "logoutPage": "/logout.html"
+  },
+  "websockets": {
+    "enabled": true
+  },
+  "routes": [
+    {
+      "source": "^/api/(.*)$",
+      "target": "$1",
+      "destination": "be",
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
+    {
+      "source":"^/socket.io/(.*)$",
+      "target": "/socket.io/$1",
+      "destination": "be",
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
+    {
+      "source": "^(.*)$",
+      "localDir": "resources/dist",
+      "authenticationType": "xsuaa"
+    }
+  ]
+}
+  

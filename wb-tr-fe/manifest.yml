@@ -1,0 +1,6 @@
+applications:
+  - name: wb-translation
+    memory: 64M
+    buildpacks:
+      - staticfile_buildpack
+    path: dist

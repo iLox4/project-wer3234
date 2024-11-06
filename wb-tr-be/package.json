@@ -1,0 +1,49 @@
+{
+  "name": "wb-tr-be",
+  "version": "1.0.0",
+  "description": "Test be for websocket",
+  "main": "dist/index.js",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "postinstall": "npm run build",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sap/xsenv": "^5.4.0",
+    "@sap/xssec": "^4.2.6",
+    "color": "^4.2.3",
+    "cors": "^2.8.5",
+    "csv-parse": "^5.5.6",
+    "csv-stringify": "^6.5.1",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.1",
+    "jszip": "^3.10.1",
+    "multer": "^1.4.5-lts.1",
+    "passport": "^0.7.0",
+    "socket.io": "^4.8.0",
+    "unzipper": "^0.12.3"
+  },
+  "devDependencies": {
+    "@types/color": "^3.0.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.13",
+    "@types/multer": "^1.4.12",
+    "@types/node": "^22.7.5",
+    "@types/passport": "^1.0.17",
+    "@types/sap__xsenv": "^3.3.2",
+    "@types/supertest": "^6.0.2",
+    "@types/unzipper": "^0.10.10",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0",
+    "typescript": "^5.6.3",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2"
+  }
+}

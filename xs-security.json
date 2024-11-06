@@ -1,0 +1,44 @@
+{
+  "xsappname": "xsuaa-wb-tr",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.GenerateWb",
+      "description": "create workbooks scope",
+      "grant-as-authority-to-apps": ["wb-tr-approuter", "wb-tr-be"]
+    },
+    {
+      "name": "$XSAPPNAME.GenerateCsv",
+      "description": "create csvs scope",
+      "grant-as-authority-to-apps": ["wb-tr-approuter", "wb-tr-be"]
+    },
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Admin"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "UserWb",
+      "description": "User who can create workbooks scope",
+      "scope-references": [
+        "$XSAPPNAME.GenerateWb"
+      ]
+    },
+    {
+      "name": "UserCsv",
+      "description": "User who can create csvs scope",
+      "scope-references": [
+        "$XSAPPNAME.GenerateCsv"
+      ]
+    },
+    {
+      "name": "Admin",
+      "description": "Admin role",
+      "scope-references": [
+        "$XSAPPNAME.Admin"
+      ]
+    }
+  ]
+}
+  
